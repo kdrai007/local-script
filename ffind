@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Use fzf to select a directory
+selected_directory="$(find ~/ -type d | fzf)"
+
+# Open a new tmux session in the selected directory
+tmux new-session -c "$selected_directory"

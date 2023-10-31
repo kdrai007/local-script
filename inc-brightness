@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+#command for incresing brightness
+dunstify "Incresing brightness" -u normal -i sundown
+brightnessctl set 10%+
+
+

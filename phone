@@ -1,0 +1,5 @@
+#!/bin/sh
+echo "Enter your last bit of ip address: "
+read ip
+
+ssh -p 8022 "u0_a314@192.168.1.$ip"

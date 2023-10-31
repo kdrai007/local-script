@@ -1,0 +1,14 @@
+#!/bin/sh
+
+
+hdmi="alsa_output.pci-0000_03_00.1.5.HiFi__hw_Generic_3__sink"
+headphone="alsa_output.pci-0000_03_00.6.5.HiFi__hw_Generic_1__sink"
+
+curr_device="$(pactl get-default-sink)"
+
+if [ "$curr_device" = $hdmi ]
+then 
+    pactl set-default-sink $headphone
+else
+    pactl set-default-sink $hdmi
+fi
