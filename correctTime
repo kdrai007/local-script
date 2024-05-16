@@ -1,0 +1,5 @@
+#!/bin/sh
+
+systemctl start systemd-timesyncd
+systemctl start ntpd
+timedatectl set-ntp true

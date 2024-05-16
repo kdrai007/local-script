@@ -2,6 +2,6 @@
 
 # Use fzf to select a directory
 selected_directory="$(find ~/ -type d | fzf)"
-
+session_name="$(echo $selected_directory | sed 's/.*\///g')"
 # Open a new tmux session in the selected directory
-tmux new-session -c "$selected_directory"
+tmux new-session -c "$selected_directory" -s "$session_name"

@@ -1,7 +1,15 @@
 #!/bin/sh
 
- wall=$(find ~/my-walls/ -type f -name "*.jpg" -o -name "*.png" | shuf -n 1 )
-#wall=~/my-walls/black.png
+external_subcommand=$1
+wall=""
+
+if [ -z "$external_subcommand" ]; then
+    wall=$(find ~/my-walls/ -type f -name "*.jpg" -o -name "*.png" | shuf -n 1 )
+else 
+    wall=~/my-walls/$external_subcommand
+    #wall=external_subcommand
+fi    
+
 xwallpaper --zoom $wall
 
 #generate color scheme

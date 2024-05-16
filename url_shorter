@@ -1,0 +1,26 @@
+#!/bin/sh
+
+#bitly api token
+api_token="b76cac7e3eb2822e1976e9889a8b2f94c9cf5955"
+#api endpoint
+url="https://api-ssl.bitly.com/v4/shorten"
+
+#taking url as input
+long_url=$1
+
+#checking if url is there for shortening process
+if [ -z "$long_url" ]; then
+    echo "Please provide url to shorten"
+else 
+    #using curl to sending request to api using url and token
+    response=$(curl -s -X POST "$url" \
+     -H "Authorization: Bearer $api_token" \
+     -H "Content-Type: application/json" \
+     -d "{\"long_url\": \"$long_url\"}")
+
+    short_url=$(echo "$response" | jq -r ".link");
+    echo "$short_url"
+fi
+
+
+
